@@ -1,4 +1,4 @@
-# NFT Store API
+# Final Milestone (3): NFT Store API
 
 Project Backend for serving content to the NFT Store application.
 
