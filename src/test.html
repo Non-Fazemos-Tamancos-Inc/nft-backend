@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<meta>
+<meta charset="UTF-8">
+<title>User Info</title>
+</meta>
+<body>
+<div id="app">
+    <h2>Product Information</h2>
+    <label>Name</label> <input id="name" type="text">
+    <br> <br>
+    <label>Description</label> <input id="description" type="text">
+    <br> <br>
+    <label>Price</label> <input id="price" type="number">
+    <br> <br>
+    <label>Quantity</label> <input id="quantity" type="number">
+    <br> <br>
+    <input type="button" value="Create" onclick="create()">
+    <input type="button" value="Read" onclick="read()">
+    <input type="button" value="Remove" onclick="remove()">
+</div>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js">
+</script>
+<script>
+    const path = "http://localhost:3000/products/";
+
+    async function read() {
+        try {
+            let res = await fetch(path + document.getElementById("name").value);
+            res = await res.json();
+            document.getElementById("name").value = res.name;
+            document.getElementById("description").value = res.description;
+            document.getElementById("price").value = res.price;
+            document.getElementById("quantity").value = res.quantity;
+        } catch (e) {
+            alert("Error: cant have null fields!");
+        }
+    }
+
+    async function create() {
+        const productData = {
+            name: document.getElementById("name").value,
+            description: document.getElementById("description").value,
+            price: document.getElementById("price").value,
+            quantity: document.getElementById("quantity").value,
+        };
+
+        const response = await fetch("http://localhost:3000/products/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(productData)
+        });
+
+        if (response.ok) {
+            const product = await response.json();
+            alert("Created product: " + productData.name);
+        } else {
+            throw new Error("Failed to create product");
+        }
+    }
+
+    async function remove() {
+        try {
+            const response = await fetch(`http://localhost:3000/products/${encodeURIComponent(name)}`, {
+                method: "DELETE"
+            });
+            if (response.ok) {
+                alert(`Product with name ${name} deleted successfully`);
+            } else {
+                alert("No existing product with this name.");
+            }
+        } catch (error) {
+            alert("Error: " + error);
+        }
+    }
+</script>
+</body>
+</html>
+
+
