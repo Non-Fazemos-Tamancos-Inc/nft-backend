@@ -4,6 +4,7 @@ const userRouter = express.Router();
 
 const User = require('../../database/schemas/user');
 const Session = require('../../database/schemas/session');
+const Wallet = require("../../database/schemas/wallet");
 
 userRouter.get('/', async (req, res) => {
     try {
@@ -22,11 +23,19 @@ userRouter.post('/', async (req, res) => {
         email: req.body.email,
     });
 
-    user.password_hash = await user.createHash(req.body.password);
+    const wallet = new Wallet({
+        owner: req.body.username,
+        individualNfts: [],
+        collections: [],
+    });
 
     try {
+        user.password_hash = await user.createHash(req.body.password);
+
         const newUser = await user.save();
-        res.status(201).json(newUser);
+        const newWallet = await wallet.save();
+
+        res.status(201).json({newUser, newWallet});
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -41,7 +50,7 @@ userRouter.get('/:username', async (req, res) => {
             return res.status(401).json({ message: 'Invalid sessionId' });
         }
 
-        const user = await User.findOne({ username }).select('-passwordHash');
+        const user = await User.findOne({ username }).select('-password_hash');
         if (user) {
             res.json(user);
         } else {

@@ -11,7 +11,8 @@ const nftSchema = new mongoose.Schema({
     on_market: {
         type: Boolean,
         default: false
-    }
+    },
+    price: String,
 });
 
 nftSchema.methods.set_hash = async function (content) {

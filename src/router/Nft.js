@@ -5,6 +5,7 @@ const fs  = require('fs');
 
 const nftRouter = express.Router();
 const Nft = require('../../database/schemas/nft');
+// const Collection = require('../../database/schemas/collection');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -14,7 +15,7 @@ nftRouter.get('/', async (req, res) => {
         const nfts = await Nft.find();
 
         const nftPaths = nfts.map((nft) => {
-            const src = path.join(__dirname, '..', 'content', 'nft', `${nft.hash}.jpg`);
+            const src = `${nft.hash}.jpg`
             return {
                 ...nft.toJSON(),
                 src,
@@ -34,7 +35,7 @@ nftRouter.get('/:hash', async (req, res) => {
         let nft = await Nft.findOne({ hash });
 
         if (nft) {
-            const imagePath = path.join(__dirname, '..', 'content', 'nft', `${nft.hash}.jpg`);
+            const imagePath = `${nft.hash}.jpg`
             nft = { ...nft.toJSON(), imagePath };
             res.json(nft);
         } else {
@@ -47,7 +48,7 @@ nftRouter.get('/:hash', async (req, res) => {
 
 nftRouter.post('/', upload.single('image'), async (req, res) => {
     try {
-        const { name, creator } = req.body;
+        const { name, creator, price } = req.body;
         const { buffer } = req.file;
 
         if (!buffer) {
@@ -57,6 +58,7 @@ nftRouter.post('/', upload.single('image'), async (req, res) => {
         const nft = new Nft({
             name,
             creator,
+            price,
         });
 
         nft.set_hash(buffer);

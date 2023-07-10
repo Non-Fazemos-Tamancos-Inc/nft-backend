@@ -37,8 +37,10 @@ sessionRouter.get('/', async (req, res) => {
             return res.status(401).json({ message: 'SessionId is required' });
         }
 
-        if (await Session.findOne({session_id})) {
-            res.json({ valid: true });
+        let session = await Session.findOne({session_id});
+
+        if (session) {
+            res.json(session);
         } else {
             return res.status(401).json({ message: 'Invalid sessionId' });
         }
