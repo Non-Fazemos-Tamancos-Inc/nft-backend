@@ -8,6 +8,8 @@ Contains modules for accessing stored NFTs, Users, sales and market content.
 
 To start a single API instance locally, simply run 
 ```npm run start```
+### To start the fileserver, run: `http-server ./content/nft/`
+
 
 
 To debug the API for development, run
