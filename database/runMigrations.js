@@ -15,7 +15,7 @@ async function main() {
         console.log("Created users.");
 
         await createNfts()
-        console.log("Created nfts.");
+        console.log("Created nft.");
 
         await createCollections()
         console.log("Created collections.");

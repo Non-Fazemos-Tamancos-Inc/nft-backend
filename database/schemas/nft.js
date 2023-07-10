@@ -1,10 +1,22 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
+const crypto = require("crypto");
 
 const nftSchema = new mongoose.Schema({
     name: String,
-    hash: String,
+    hash: {
+        type: String,
+        unique: true
+    },
     creator: String,
-    src: String,
+    on_market: {
+        type: Boolean,
+        default: false
+    }
 });
 
-export default nftSchema;
+nftSchema.methods.set_hash = async function (content) {
+    this.hash = crypto.createHash('sha256').update(content).digest('hex');
+    return this.hash;
+};
+
+module.exports = mongoose.model('Nft', nftSchema);

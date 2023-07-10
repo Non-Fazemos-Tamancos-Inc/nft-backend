@@ -1,12 +1,10 @@
-import mongoose from "mongoose";
-import collectionSchema from "./collection.js";
-import nftSchema from "./nft.js";
+const mongoose = require('mongoose');
 
 const walletSchema = new mongoose.Schema({
     hash: String,
     owner: String,
-    individualNfts: [nftSchema],
-    collections: [collectionSchema],
+    individualNfts: [],
+    collections: [],
 });
 
-export default walletSchema;
+module.exports = mongoose.model('Wallet', walletSchema);

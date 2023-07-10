@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import nftSchema from './nft.js';
+const mongoose = require('mongoose');
 
 const collectionSchema = new mongoose.Schema({
     name: String,
     hash: String,
     creator: String,
-    nfts: [nftSchema],
+    nfts: [],
+    on_market: Boolean
 });
 
-export default collectionSchema;
+module.exports = mongoose.model('Collection', collectionSchema);

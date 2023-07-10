@@ -8,19 +8,19 @@ let sampleUsers = [
         name: "Rafael Zimmer",
         email: "rzimmerdev@gmail.com",
         username: "rzimmerdev",
-        passwordHash: "321"
+        password_hash: "$2y$10$2dnWpNucmgHtJQFv3aT9.u4btAyRNzUiopEk1gW2x.WarS9jCqKFi"  // 123
     }),
     new User({
         name: "Adalton Silva",
         email: "adalton@usp.br",
         username: "adartu",
-        passwordHash: "123"
+        password_hash: "$2y$10$ty4MUtH/8zDtKJXgDzIxaOksb9UcVWzprTA8eZMRQJb6/yXHLxThG"  // 321
     }),
     new User({
         name: "Lelis Amilton",
         email: "lelis@domain.io",
         username: "lelis",
-        passwordHash: "111"
+        password_hash: "$2y$10$A5xrVWGiU85iwKcovATaw.9TQKqpDwxweY6pBT//4ZhuT2F.4fvES" // 111
     })
 ]
 

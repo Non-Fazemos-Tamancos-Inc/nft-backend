@@ -5,9 +5,10 @@
 /.pnp
 .pnp.js
 .idea
+.code
 # testing
 /coverage
-
+/content/nft/*
 # production
 /build
 
