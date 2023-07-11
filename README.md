@@ -45,11 +45,59 @@ functionalities include adding NFTs to the store, managing users, controlling ma
 
 ### Test Plan
 
-Falta descrever
+The backend can be tested using the Insomnia API Client [https://insomnia.rest/], the requests are in the file `insomnia.yalm` 
+and cover the following funcionalities:
+
+1. User Registration and Authentication:
+
+    - Test user registration by providing valid and invalid input data, checking for appropriate error handling and
+      successful account creation.
+    - Test user login and authentication using both valid and invalid credentials.
+
+2. Collection Management:
+
+    - Test creating new collections with various input data and verifying their proper creation and display.
+    - Test updating existing collections, ensuring the changes are reflected correctly.
+    - Test deleting collections and confirming their removal from the system.
+
+3. Collection Items:
+
+    - Test adding new items to collections, validating the item details and their inclusion in the collection.
+    - Test updating item information and verifying the changes are correctly applied.
+    - Test removing items from collections and ensuring they are no longer associated with the collection.
+
+4. Buying Items:
+
+    - Test adding items to the cart and verifying their inclusion.
+    - Test the checkout process by simulating both crypto and credit card payments, ensuring the correct handling of
+      payment information and successful completion of the purchase.
+    - Validate that the purchased items are marked as sold and become unavailable for further purchase.
 
 ### Test Results
 
-Falta descrever
+The conducted tests yielded the following results:
+
+1. User Registration and Authentication:
+
+    - Registration and login processes were successful, and proper error handling was in place for invalid input or
+      authentication failures. The user information  is stored in the database.
+
+2. Collection Management:
+
+    - Creation, updating, and deletion of collections worked as expected, with accurate display and persistence
+      of collection information. The collection is stored in the database.
+
+3. Collection Items:
+
+    - Adding, updating, and removing items within collections were functioning correctly, and the changes were reflected
+      in the database.
+
+4. Buying Items:
+
+    - Adding items to the cart and completing the checkout process worked without issues, both for crypto and credit
+      card payments.
+    - Purchased items were appropriately marked as sold and became unavailable for further purchase.
+    - Every purchase updates the database.
 
 ### Build Procedure
 
