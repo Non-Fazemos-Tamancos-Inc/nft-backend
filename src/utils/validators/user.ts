@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongoose'
 
 import { ApiError } from '../../error/ApiError'
-import { UserModel } from '../../model/User'
+import { UserModel, UserRole } from '../../model/User'
 
 import { isEmailValid } from './email'
 import { isPasswordValid } from './password'
@@ -13,6 +13,7 @@ export interface UserPayload {
   password?: string
   wallet?: string
   active?: boolean
+  role?: UserRole
   updatedAt?: Date
 }
 

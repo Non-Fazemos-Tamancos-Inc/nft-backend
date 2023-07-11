@@ -1,6 +1,5 @@
 import { Router } from 'express'
 
-import { logger } from '../configs/logger'
 import { ApiError } from '../error/ApiError'
 import { AuthenticationFailedError } from '../error/AuthenticationFailedError'
 import { NotFoundError } from '../error/NotFoundError'
@@ -59,9 +58,16 @@ usersRouter.put(
 usersRouter.post(
   '/register',
   asyncHandler(async (req, res) => {
+    let authInfo = null
+
+    try {
+      authInfo = handleAuthorization(req)
+    } catch (_e) {
+      // Ignore error
+    }
+
     // Extract payload
-    logger.info({ req: req.body })
-    const { name, email, password, wallet } = req.body || {}
+    const { name, email, password, wallet, admin } = req.body || {}
 
     // Validate payload
     await validateUserPayload({ name, email, password, wallet }, false)
@@ -71,8 +77,8 @@ usersRouter.post(
       name,
       email,
       password: await hashPassword(password),
-      role: UserRole.Customer,
       wallet,
+      role: authInfo?.role === UserRole.Admin && admin ? UserRole.Admin : UserRole.Customer,
       active: true,
     })
 
@@ -100,7 +106,7 @@ usersRouter.patch(
     const authInfo = handleAuthorization(req)
 
     let { id } = req.params
-    const { name, email, password, wallet, active } = req.body
+    const { name, email, password, wallet, active, admin } = req.body
 
     if (id === 'me') {
       id = authInfo.id
@@ -128,11 +134,17 @@ usersRouter.patch(
     if (password != null) {
       updatePayload.password = await hashPassword(password)
     }
-    if (wallet != null) {
+    if (wallet !== undefined) {
       updatePayload.wallet = wallet
     }
     if (active != null) {
       updatePayload.active = active
+    }
+    if (authInfo.role === UserRole.Admin && admin != null) {
+      if (authInfo.id === id && !admin) {
+        throw new ApiError('You cannot unmake yourself an admin', { status: 400 })
+      }
+      updatePayload.role = admin ? UserRole.Admin : UserRole.Customer
     }
 
     let updatedUser = await UserModel.findByIdAndUpdate(id, updatePayload)

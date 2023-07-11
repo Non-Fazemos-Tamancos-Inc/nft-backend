@@ -17,6 +17,7 @@ export interface Purchase {
   sentAt?: Date
   createdAt?: Date
   updatedAt?: Date
+  price?: number
 }
 
 export interface PurchaseResponse {
@@ -27,6 +28,7 @@ export interface PurchaseResponse {
   sentAt?: Date
   createdAt?: Date
   updatedAt?: Date
+  price?: number
 }
 
 export const PurchaseSchema = new Schema({
@@ -54,6 +56,10 @@ export const PurchaseSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  price: {
+    type: Number,
+    required: true,
+  },
 })
 
 export const PurchaseModel = model('Purchase', PurchaseSchema)
@@ -67,5 +73,6 @@ export function purchaseToResponse(purchase: Purchase): PurchaseResponse {
     sentAt: purchase.sentAt,
     createdAt: purchase.createdAt,
     updatedAt: purchase.updatedAt,
+    price: purchase.price,
   }
 }

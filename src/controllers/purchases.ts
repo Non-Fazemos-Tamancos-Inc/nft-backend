@@ -189,6 +189,7 @@ purchasesRouter.post(
           userId: authInfo.id,
           nftId: nft.id,
           status: PurchaseStatus.COMPLETED,
+          price: nft.price,
         })
         await purchase.save()
         purchases.push(purchase)
@@ -203,6 +204,7 @@ purchasesRouter.post(
           userId: authInfo.id,
           nftId: nft.id,
           status: PurchaseStatus.PENDING,
+          price: nft.price,
         })
         await purchase.save()
         purchases.push(purchase)
