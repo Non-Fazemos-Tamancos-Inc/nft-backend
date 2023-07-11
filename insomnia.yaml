@@ -1,0 +1,955 @@
+_type: export
+__export_format: 4
+__export_date: 2023-07-11T07:02:50.181Z
+__export_source: insomnia.desktop.app:v2023.4.0
+resources:
+  - _id: req_6c33dde8c4d14448aa1031a5f5012f9a
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053400894
+    created: 1689046354499
+    url: "{{ _.api_url }}/api/users/register"
+    name: Signup
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "lelis",
+        	"email": "eu@lelis.dev",
+        	"password": "senha123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1689049552150
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_5a460861d1e04593a962daa78d005ba2
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689052749800
+    created: 1689052749800
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689052749800
+    _type: request_group
+  - _id: wrk_f7e4aa714fd64a98821a7ce11463347c
+    parentId: null
+    modified: 1689046277337
+    created: 1689046277337
+    name: Server
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_a0beea7e474143d6b103c1c3058aa3f0
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053397399
+    created: 1689053229158
+    url: "{{ _.api_url }}/api/users/login"
+    name: Login
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "eu@lelis.dev",
+        	"password": "senha123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1689049552100
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_902f0ee5c4ec40e781e7094a5d698bf4
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053946667
+    created: 1689053866715
+    url: "{{ _.api_url }}/api/users/"
+    name: List All (admin)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689049552075
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_86f4e6dcd5074693887fa434ed155e5b
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053498193
+    created: 1689053417543
+    url: "{{ _.api_url }}/api/users/me"
+    name: Retrieve (self)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689049552050
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cac79254a60b4109bbe7b262923d79ba
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053954138
+    created: 1689053944530
+    url: "{{ _.api_url }}/api/users/64ace8cb60a067ecd0443c4e"
+    name: Retrieve (admin)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689005410070.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_241d032712d84775bdb5ebaf4b4cc387
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053661335
+    created: 1689053489626
+    url: "{{ _.api_url }}/api/users/me"
+    name: Update (self)
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "julieta"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688872984130.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e5c9e884e4f34078802e7628e5572bad
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689053975920
+    created: 1689053966061
+    url: "{{ _.api_url }}/api/users/64ace8cb60a067ecd0443c4e"
+    name: Update (admin)
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "cleber"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688784700170.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e040ab4356834de4b9fa122bdbcd2614
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689054079544
+    created: 1689053991893
+    url: "{{ _.api_url }}/api/users/64ace8cb60a067ecd0443c4e/activate"
+    name: Deactivate (admin)
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688740558190.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9fe17167b3234c8ea10a78afcc2485de
+    parentId: fld_5a460861d1e04593a962daa78d005ba2
+    modified: 1689054093123
+    created: 1689054091310
+    url: "{{ _.api_url }}/api/users/64ace8cb60a067ecd0443c4e/activate"
+    name: Reactivate (admin)
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688718487200.9375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ab7ed98e54d14ffcafe6d518ad8aa88e
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054587301
+    created: 1689054402189
+    url: "{{ _.api_url }}/api/collections"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688806771160.6875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689054161895
+    created: 1689054159209
+    name: Collections
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689052749750
+    _type: request_group
+  - _id: req_bd99c9ed50c84ac2acfc18f85f73a20c
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054419231
+    created: 1689054414599
+    url: "{{ _.api_url }}/api/collections"
+    name: List (unauthorized)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1688795735665.7188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_085fe5cb401448e9a1f59f80b8e04e27
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054582300
+    created: 1689054438454
+    url: "{{ _.api_url }}/api/collections/64acec9d222b15a838ece5bf"
+    name: Retrieve
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688795735615.7188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d3653d70e1884cf698187d17244cd060
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054880446
+    created: 1689054468302
+    url: "{{ _.api_url }}/api/collections/64acec9d222b15a838ece5bf"
+    name: Retrieve (unauthorized)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1688790217893.2344
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a7367300b1e3401daf70b49e0ee56abd
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054509684
+    created: 1689054176543
+    url: "{{ _.api_url }}/api/collections"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "Pink Thinghies",
+        	"description": "This is the pink thingies collection!",
+        	"releaseDate": "2023-07-11T16:51:57.291Z",
+        	"image": "https://imusic.b-cdn.net/images/item/original/891/4580128893891.jpg?polyphia-2018-new-levels-new-devils-cd&class=scaled"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688790217868.2344
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a3432974f1404f16ac443cc9fc197636
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054514650
+    created: 1689054488287
+    url: "{{ _.api_url }}/api/collections/64acec9d222b15a838ece5bf"
+    name: Update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "Le Pink Thinghies",
+        	"description": "This is the pink thingies collection!",
+        	"releaseDate": "2023-07-11T19:51:57.291Z",
+        	"image": "https://imusic.b-cdn.net/images/item/original/891/4580128893891.jpg?polyphia-2018-new-levels-new-devils-cd&class=scaled"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688790217843.2344
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c7432660c09a45d38223d853e48bbb82
+    parentId: fld_ed99b3a8900044a1b2f00d8af3c923f8
+    modified: 1689054591629
+    created: 1689054573461
+    url: "{{ _.api_url }}/api/collections/64aced51d6cb7c3364298873"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688790217793.2344
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_489326db25744b46b8f1edc3e32327c5
+    parentId: fld_e848d157da3c46a49c346512de662f4d
+    modified: 1689054706061
+    created: 1689054680077
+    url: "{{ _.api_url }}/api/nfts/collection/64acec9d222b15a838ece5bf"
+    name: List for Collection
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688801253413.2031
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_e848d157da3c46a49c346512de662f4d
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689054621018
+    created: 1689054614882
+    name: NFTs
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689052749700
+    _type: request_group
+  - _id: req_1598eba9bf0d47b28883d6085c45f51f
+    parentId: fld_e848d157da3c46a49c346512de662f4d
+    modified: 1689055068723
+    created: 1689055013006
+    url: "{{ _.api_url }}/api/nfts/single/64acee8fd6cb7c3364298879"
+    name: Retrieve
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688799873976.332
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_42c6c98329e4435b89c59a542cb2ce47
+    parentId: fld_e848d157da3c46a49c346512de662f4d
+    modified: 1689054861883
+    created: 1689054722352
+    url: "{{ _.api_url }}/api/nfts"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"collectionId": "64acec9d222b15a838ece5bf",
+        	"name": "Pink #1",
+        	"description": "The first pinkie",
+        	"image": "https://www.rocksins.com/wp-content/uploads/2022/10/Polyphia-Album-Cover-2022-e1666958821930.jpg",
+        	"price": 0.22
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688798494539.461
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b64b0f458cf0480b8eb19042d8b5efb3
+    parentId: fld_e848d157da3c46a49c346512de662f4d
+    modified: 1689055169372
+    created: 1689055102360
+    url: "{{ _.api_url }}/api/nfts/64acee8fd6cb7c3364298879"
+    name: Update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "Pink #1",
+        	"description": "The first pinkie?",
+        	"image": "https://www.rocksins.com/wp-content/uploads/2022/10/Polyphia-Album-Cover-2022-e1666958821930.jpg",
+        	"price": 0.221
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688797115102.5898
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f61ba9f8da7b4379acb84176905f12cb
+    parentId: fld_e848d157da3c46a49c346512de662f4d
+    modified: 1689055194802
+    created: 1689055179265
+    url: "{{ _.api_url }}/api/nfts/64acefcd8b196cadb756dc89"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1688796425384.1543
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_781dc1304722454bab4cb4666b49fde7
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689055870389
+    created: 1689055853228
+    url: "{{ _.api_url }}/api/purchases/"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689054687880.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_649e6ec093954772a49b8b29655a7d60
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689055415304
+    created: 1689055409071
+    name: Purchases
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689052749650
+    _type: request_group
+  - _id: req_085c9b449fe74f0281e3590156a3c5e8
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689055864834
+    created: 1689055628872
+    url: "{{ _.api_url }}/api/purchases/user/64ace8072ecc718f99cd25a9"
+    name: List User's
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689053587366.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5cf505e8aa73465e9240c3c43a5c6e52
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689055781252
+    created: 1689055689762
+    url: "{{ _.api_url }}/api/purchases/user/me"
+    name: List User's (self)
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689052486853
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_77292ffc01a04e40982c458bd0241d3e
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689056502142
+    created: 1689055807961
+    url: "{{ _.api_url }}/api/purchases/single/64acf465070f4675a1d1a9b7"
+    name: Retrieve
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689052486803
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ef5e1a4af7d741c696f7230f6104667e
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689056356262
+    created: 1689055894114
+    url: "{{ _.api_url }}/api/purchases/"
+    name: Create (Card)
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nfts": [
+        		"64acee8fd6cb7c3364298879"
+        	],
+        	"paymentMethod": "card",
+        	"cardInfo": {
+        		"cardNumber": "1234123412341234",
+        		"cardHolder": "Cleber da Silva",
+        		"expirationDate": "08/23",
+        		"cvv": "100"
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689051019476.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5ab0c3af357040e49a8b86a22de79fb8
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689056390686
+    created: 1689056380097
+    url: "{{ _.api_url }}/api/purchases/"
+    name: Create (Crypto)
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nfts": [
+        		"64acee8fd6cb7c3364298879"
+        	],
+        	"paymentMethod": "crypto"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689050285813.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_792dc634a8bc4266ad12206e5e2305c5
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689056517422
+    created: 1689056507699
+    url: "{{ _.api_url }}/api/purchases/64acf465070f4675a1d1a9b7"
+    name: Refund
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689050285763.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e2baa08d7aae4f099118a78b28792ef6
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689056732494
+    created: 1689056726336
+    url: "{{ _.api_url }}/api/purchases/64acf50fe54fe4bffb479c7b/sent"
+    name: Mark as Sent
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689049918956.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3771e6f3717e487280d0baff2d3510a3
+    parentId: fld_649e6ec093954772a49b8b29655a7d60
+    modified: 1689056749296
+    created: 1689056746430
+    url: "{{ _.api_url }}/api/purchases/64acf50fe54fe4bffb479c7b/sent"
+    name: Unmark as Sent
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.api_token }}"
+      prefix: Bearer
+    metaSortKey: -1689049735553.3125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f923b717532b41b294d3612496452567
+    parentId: fld_0f17eab981a942f89dd4a9e462fa97db
+    modified: 1689058791186
+    created: 1689058519084
+    url: "{{ _.api_url }}/uploads/files/2c665a6f-d56e-4d49-8e58-a37102dce180.png"
+    name: Get File
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1689058519084
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0f17eab981a942f89dd4a9e462fa97db
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689058321006
+    created: 1689058318673
+    name: Uploads
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689052749600
+    _type: request_group
+  - _id: req_c9f45b878136408686b6e477cf38305a
+    parentId: fld_0f17eab981a942f89dd4a9e462fa97db
+    modified: 1689058484177
+    created: 1689058331422
+    url: "{{ _.api_url }}/uploads"
+    name: Upload File
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_1ac6ec1d4d3a45adad2320963b67162c
+          name: file
+          value: ""
+          description: ""
+          type: file
+          fileName: /home/danielhl/Projects/USP/TP-Calc-Num/datasets/me-gs.png
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: "{{ _.api_token }}"
+    metaSortKey: -1689052749550
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_efc2d02bf324c4875d6c9485e9cdd34395884b08
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689058506878
+    created: 1689046277338
+    name: Base Environment
+    data:
+      api_url: http://localhost:3000
+      api_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjRhY2U4MDcyZWNjNzE4Zjk5Y2QyNWE5IiwiZW1haWwiOiJldUBsZWxpcy5kZXYiLCJyb2xlIjoiQURNSU4ifSwiaWF0IjoxNjg5MDU4NDkzLCJleHAiOjE2ODkwNjIwOTMsInN1YiI6IjY0YWNlODA3MmVjYzcxOGY5OWNkMjVhOSJ9.sIpRztlXPRojoX5F2XmoIWCuqixZ2P5ddDk_8x7viV73vn2dFn80OcaRd_7nUVNIKIWvmSQt3ZSw6uMLWh1pcg
+    dataPropertyOrder:
+      "&":
+        - api_url
+        - api_token
+    color: null
+    isPrivate: false
+    metaSortKey: 1689046277338
+    _type: environment
+  - _id: jar_efc2d02bf324c4875d6c9485e9cdd34395884b08
+    parentId: wrk_f7e4aa714fd64a98821a7ce11463347c
+    modified: 1689046277339
+    created: 1689046277339
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
