@@ -99,7 +99,7 @@ The conducted tests yielded the following results:
     - Purchased items were appropriately marked as sold and became unavailable for further purchase.
     - Every purchase updates the database.
 
-### Build Procedure
+### Build Procedure [NOT FINISHED]
 
 To run the server-side of the application, follow these steps:
 
