@@ -1,7 +1,7 @@
-const express = require('express');
-const Wallet = require('../../database/schemas/wallet');
+const express = require('express')
+const Wallet = require('../database/schemas/wallet')
 
-const walletRouter = express.Router();
+const walletRouter = express.Router()
 
 // walletRouter.post('/:wallet/nft', async (req, res) => {
 //     try {
@@ -25,20 +25,20 @@ const walletRouter = express.Router();
 // });
 
 walletRouter.get('/:owner', async (req, res) => {
-    try {
-        const { owner } = req.params;
+  try {
+    const { owner } = req.params
 
-        const wallet = await Wallet.findOne({ owner });
+    const wallet = await Wallet.findOne({ owner })
 
-        if (!wallet) {
-            return res.status(404).json({ message: 'Wallet not found' });
-        }
-
-        res.json(wallet);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+    if (!wallet) {
+      return res.status(404).json({ message: 'Wallet not found' })
     }
-});
+
+    res.json(wallet)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 
 // walletRouter.delete('/:wallet/nft/:nft', async (req, res) => {
 //     try {
@@ -60,4 +60,4 @@ walletRouter.get('/:owner', async (req, res) => {
 //     }
 // });
 
-module.exports = walletRouter;
+module.exports = walletRouter
