@@ -34,13 +34,13 @@ usersRouter.put(
     const foundUser: User | null = await UserModel.findOne({ email })
 
     if (foundUser == null || foundUser.active === false) {
-      throw new AuthenticationFailedError()
+      throw new AuthenticationFailedError('User not found or inactive')
     }
 
     // Validate password
     const passwordMatches = await checkPassword(password, foundUser.password)
     if (!passwordMatches) {
-      throw new AuthenticationFailedError()
+      throw new AuthenticationFailedError('Password does not match')
     }
 
     // Build token
