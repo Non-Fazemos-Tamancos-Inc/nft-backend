@@ -1,36 +1,39 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
+import { exit } from 'process'
 
-const nftRouter = require('./router/Nft')
-const userRouter = require('./router/User')
-const sessionRouter = require('./router/Session')
-const purchaseRouter = require('./router/Purchase')
-const walletRouter = require('./router/Wallet')
-const cartRouter = require('./router/Cart')
+import express from 'express'
 
-mongoose.connect('mongodb://127.0.0.1:27017/local')
+import { configs } from './configs/configs'
+import { logger } from './configs/logger'
+import { connect } from './configs/mongoose'
+import { rootRouter } from './controllers'
+import { recoverPurchases } from './controllers/purchases'
 
-const app = express()
+export const app = express()
 
-app.use(express.json())
+// Server initializer
+async function init() {
+  // Register root router
+  app.use(rootRouter)
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  }),
-)
+  // Configure MongoDB
+  try {
+    await connect()
+  } catch (e) {
+    logger.error(e, 'Failed to connect to MongoDB')
+    throw e
+  }
 
-const apiRouter = express.Router()
-apiRouter.use('/nft', nftRouter)
-apiRouter.use('/user', userRouter)
-apiRouter.use('/session', sessionRouter)
-apiRouter.use('/purchase', purchaseRouter)
-apiRouter.use('/cart', cartRouter)
-apiRouter.use('/wallet', walletRouter)
+  // Spin up server
+  app.listen(configs.port, configs.host, () => {
+    logger.info(`Express server listening on http://${configs.host}:${configs.port}`)
+  })
 
-app.use('/api', apiRouter)
+  // Handle initialization tasks
+  await recoverPurchases()
+}
 
-app.listen(8000, () => {
-  console.log('Server started on port 8000')
+// Initialize server
+init().catch((e) => {
+  logger.error(e, `Server failed to start`)
+  exit(1)
 })
