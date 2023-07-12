@@ -1,0 +1,1 @@
+mongorestore -d nft-db --gzip --archive="/nft-db-dump"
