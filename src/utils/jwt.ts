@@ -26,7 +26,7 @@ export function generateJWT(user: User): string {
     return sign({ payload }, configs.secret, {
       algorithm: 'HS512',
       subject: user._id.toString(),
-      expiresIn: '1h',
+      expiresIn: '12h',
     })
   } catch (e) {
     logger.error(e, `Failed to sign JWT for user ${user._id}`)
@@ -44,8 +44,7 @@ export function checkJWT(token: string): JWTPayload {
       throw new Error('Invalid parsing result')
     }
 
-    const payload: JWTPayload = result.payload
-    return payload
+    return result.payload
   } catch (e) {
     throw new JWTError(JWTErrorKind.Checking, { cause: e })
   }

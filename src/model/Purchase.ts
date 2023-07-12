@@ -1,5 +1,8 @@
 import { model, Schema } from 'mongoose'
 
+import { NFTResponse } from './NFT'
+import { UserResponse } from './User'
+
 /* eslint-disable no-unused-vars */
 export enum PurchaseStatus {
   PENDING = 'PENDING',
@@ -29,6 +32,9 @@ export interface PurchaseResponse {
   createdAt?: Date
   updatedAt?: Date
   price?: number
+
+  buyer?: UserResponse
+  nft?: NFTResponse
 }
 
 export const PurchaseSchema = new Schema({
@@ -64,7 +70,11 @@ export const PurchaseSchema = new Schema({
 
 export const PurchaseModel = model('Purchase', PurchaseSchema)
 
-export function purchaseToResponse(purchase: Purchase): PurchaseResponse {
+export function purchaseToResponse(
+  purchase: Purchase,
+  buyer?: UserResponse,
+  nft?: NFTResponse,
+): PurchaseResponse {
   return {
     _id: purchase._id?.toString() || '',
     nftId: purchase.nftId,
@@ -74,5 +84,8 @@ export function purchaseToResponse(purchase: Purchase): PurchaseResponse {
     createdAt: purchase.createdAt,
     updatedAt: purchase.updatedAt,
     price: purchase.price,
+
+    buyer,
+    nft,
   }
 }

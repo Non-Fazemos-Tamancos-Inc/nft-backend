@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import { ApiError } from '../error/ApiError'
-import { CollectionModel } from '../model/Collection'
+import { Collection, CollectionModel, collectionToResponse } from '../model/Collection'
 import { NFTModel, nftToResponse } from '../model/NFT'
 import { UserRole } from '../model/User'
 import { asyncHandler } from '../utils/asyncHandler'
@@ -65,10 +65,11 @@ nftsRouter.get(
     }
 
     // Check if collection exists and is released
+    let collection: Collection | null = null
     if (authInfo == null || authInfo.role !== UserRole.Admin) {
       const threshold = Date.now() + RELEASE_THRESHOLD
-      const collection = await CollectionModel.findById(nft.collectionId)
-      if (collection == null || collection.releaseDate.getTime() > threshold) {
+      collection = await CollectionModel.findById(nft.collectionId)
+      if (!collection?.releaseDate || collection.releaseDate.getTime() > threshold) {
         throw new ApiError('Collection not found', { status: 404 })
       }
     }
@@ -77,6 +78,7 @@ nftsRouter.get(
     res.status(200)
     res.json({
       nft: nftToResponse(nft),
+      collection: collection ? collectionToResponse(collection) : null,
     })
   }),
 )

@@ -4,9 +4,9 @@ import { Router } from 'express'
 
 import { logger } from '../configs/logger'
 import { ApiError } from '../error/ApiError'
-import { NFTModel } from '../model/NFT'
+import { NFTModel, nftToResponse } from '../model/NFT'
 import { Purchase, PurchaseModel, PurchaseStatus, purchaseToResponse } from '../model/Purchase'
-import { UserModel, UserRole } from '../model/User'
+import { UserModel, UserRole, userToResponse } from '../model/User'
 import { asyncHandler } from '../utils/asyncHandler'
 import { handleAuthorization } from '../utils/auth'
 
@@ -84,9 +84,22 @@ purchasesRouter.get(
 
     const purchases = await PurchaseModel.find({})
 
+    const filledPurchases = await Promise.all(
+      purchases.map(async (purchase) => {
+        const user = await UserModel.findById(purchase.userId)
+        const nft = await NFTModel.findById(purchase.nftId)
+
+        return purchaseToResponse(
+          purchase,
+          user ? userToResponse(user) : undefined,
+          nft ? nftToResponse(nft) : undefined,
+        )
+      }),
+    )
+
     res.status(200)
     res.json({
-      purchases: purchases.map((purchase) => purchaseToResponse(purchase)),
+      purchases: filledPurchases,
     })
   }),
 )
