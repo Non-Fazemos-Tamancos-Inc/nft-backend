@@ -11,5 +11,5 @@ export const configs = {
   secret:
     process.env.EXPRESS_SECRET ||
     '06308ff30ff3b390acf2357b440171cd798a1fd549f06eb0825bbcee99e74619f47d14dfbbffa38921a833f251dba05766d98119d7357cde1447186f45169500',
-  uploadPath: process.env.EXPRESS_UPLOAD_PATH || '/tmp/nft-uploads',
+  uploadPath: process.env.EXPRESS_UPLOAD_PATH || './data/uploads',
 }
