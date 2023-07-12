@@ -13,6 +13,7 @@ services:
     environment:
       - NODE_ENV=development
       - EXPRESS_MONGO_URI=mongodb://mongo:27017/nft-db
+      - EXPRESS_HOST=0.0.0.0
     depends_on:
       - mongo
   mongo:
