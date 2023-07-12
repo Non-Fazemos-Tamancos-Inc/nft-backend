@@ -1,5 +1,6 @@
 import { Router } from 'express'
 
+import { logger } from '../configs/logger'
 import { ApiError } from '../error/ApiError'
 import { AuthenticationFailedError } from '../error/AuthenticationFailedError'
 import { NotFoundError } from '../error/NotFoundError'
@@ -285,3 +286,25 @@ usersRouter.put(
     })
   }),
 )
+
+export async function ensureAdminIsPresent() {
+  try {
+    const admin = await UserModel.findOne({ role: UserRole.Admin })
+
+    if (admin != null) {
+      logger.info('Admin is present')
+      return
+    }
+
+    logger.info('Admin is not present, creating')
+    await UserModel.create({
+      name: 'admin',
+      email: 'admin@example.com',
+      password: await hashPassword('admin'),
+      role: UserRole.Admin,
+    })
+    logger.info('Default admin created: (email: "admin@example.com", password: "admin")')
+  } catch (error) {
+    logger.error('Failed to ensure admin is present', error)
+  }
+}

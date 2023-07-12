@@ -7,6 +7,7 @@ import { logger } from './configs/logger'
 import { connect } from './configs/mongoose'
 import { rootRouter } from './controllers'
 import { recoverPurchases } from './controllers/purchases'
+import { ensureAdminIsPresent } from './controllers/users'
 
 export const app = express()
 
@@ -30,6 +31,7 @@ async function init() {
 
   // Handle initialization tasks
   await recoverPurchases()
+  await ensureAdminIsPresent()
 }
 
 // Initialize server
