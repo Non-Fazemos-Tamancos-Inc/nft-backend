@@ -128,8 +128,10 @@ purchasesRouter.post(
       throw new ApiError('No nft provided', { status: 400 })
     }
 
+    const nftsSet = new Set(nfts)
+
     const actualNfts = await Promise.all(
-      nfts.map(async (nft) => {
+      Array.from(nftsSet).map(async (nft) => {
         const actualNft = await NFTModel.findById(nft)
         if (actualNft == null) {
           throw new ApiError('NFT not found', { status: 404 })
